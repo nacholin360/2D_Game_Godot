@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Escenas/Player.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/Char_Walk/char_Walk.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Char_Rest/char_rest.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Char_Rest/char_rest2.png" type="Texture" id=4]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 10.7806
+height = 23.336
+
+[sub_resource type="SpriteFrames" id=1]
+resource_name = "Player_anim"
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "Walk",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "Rest",
+"speed": 2.0
+} ]
+
+[node name="Nivel 1" type="Node"]
+
+[node name="Player" type="Area2D" parent="."]
+position = Vector2( 68.3787, 599.483 )
+script = ExtResource( 1 )
+Velocidad = 200
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2( -1.22305, -32.4285 )
+shape = SubResource( 2 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Player"]
+position = Vector2( -0.154083, -49.6534 )
+scale = Vector2( 0.978918, 1 )
+frames = SubResource( 1 )
+animation = "Walk"
+playing = true
